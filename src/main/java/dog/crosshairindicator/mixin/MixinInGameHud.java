@@ -28,6 +28,7 @@ public class MixinInGameHud {
             int scaledWidth = 15;
             int scaledHeight = 15;
 
+            // If blocking render shield crosshair
             if (this.client.targetedEntity.isBlocking()) {
                 context.drawGuiTexture(RenderLayer::getCrosshair, SHIELD_CROSSHAIR, (context.getScaledWindowWidth() - scaledWidth) / 2, (context.getScaledWindowHeight() - scaledHeight) / 2, scaledWidth, scaledHeight);
             } else {
