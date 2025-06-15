@@ -28,11 +28,9 @@ public class MixinInGameHud {
             int scaledWidth = 15;
             int scaledHeight = 15;
 
-		Identifier texture = player.isBlocking() ? SHIELD_CROSSHAIR : CUSTOM_CROSSHAIR;
+	    Identifier texture = player.isBlocking() ? SHIELD_CROSSHAIR : CUSTOM_CROSSHAIR;
 		
-                context.drawGuiTexture(RenderLayer::getCrosshair, texture, (context.getScaledWindowWidth() - scaledWidth) / 2, (context.getScaledWindowHeight() - scaledHeight) / 2, scaledWidth, scaledHeight);
-            }
+            context.drawGuiTexture(RenderLayer::getCrosshair, texture, (context.getScaledWindowWidth() - scaledWidth) / 2, (context.getScaledWindowHeight() - scaledHeight) / 2, scaledWidth, scaledHeight);
         }
     }
-
 }
