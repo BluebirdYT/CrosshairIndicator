@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.hud.DebugHud;
 
 @Mixin(InGameHud.class)
 public class MixinInGameHud {
@@ -24,7 +25,7 @@ public class MixinInGameHud {
 
     @Inject(method = "renderCrosshair", at = @At("TAIL"))
 	private void drawCrosshair(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
-        if (!this.client.options.debugEnabled && this.client.targetedEntity instanceof PlayerEntity player) {
+        if (!debugHud.shouldShowDebugHud() && this.client.targetedEntity instanceof PlayerEntity player) {
             int scaledWidth = 15;
             int scaledHeight = 15;
 
