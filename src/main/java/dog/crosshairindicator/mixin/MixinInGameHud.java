@@ -22,7 +22,7 @@ public class MixinInGameHud {
 	@Shadow @Final private MinecraftClient client;
 	@Unique Identifier CUSTOM_CROSSHAIR = Identifier.of("crosshairindicator", "crosshair");
 	@Unique Identifier SHIELD_CROSSHAIR = Identifier.of("crosshairindicator", "shield_crosshair");
-	@Shadow boolean debugScreen = debugHud.shouldShowDebugHud();
+	@Shadow boolean debugScreen = this.debugHud.shouldShowDebugHud();
 
     @Inject(method = "renderCrosshair", at = @At("TAIL"))
 	private void drawCrosshair(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
