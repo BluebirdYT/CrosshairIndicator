@@ -22,10 +22,11 @@ public class MixinInGameHud {
 	@Shadow @Final private MinecraftClient client;
 	@Unique Identifier CUSTOM_CROSSHAIR = Identifier.of("crosshairindicator", "crosshair");
 	@Unique Identifier SHIELD_CROSSHAIR = Identifier.of("crosshairindicator", "shield_crosshair");
+	@Shadow boolean debugScreen = debugHud.shouldShowDebugHud();
 
     @Inject(method = "renderCrosshair", at = @At("TAIL"))
 	private void drawCrosshair(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
-        if (!debugHud.shouldShowDebugHud() && this.client.targetedEntity instanceof PlayerEntity player) {
+        if (!debugScreen && this.client.targetedEntity instanceof PlayerEntity player) {
             int scaledWidth = 15;
             int scaledHeight = 15;
 
